@@ -14,6 +14,8 @@ import java.util.List;
 public class LoginServiceDefImpl implements ILoginService {
     @Override
     public Result getusersinfo(String useraccount, String userpassword,List<S_users>userinfo) {
+        System.out.println(useraccount);
+        System.out.println(userpassword);
         for(int i=0;i<userinfo.size();i++)
         {
             if(userinfo.get(i).getUser_account().equals(useraccount))
@@ -21,15 +23,18 @@ public class LoginServiceDefImpl implements ILoginService {
                 if(userinfo.get(i).getUser_password().equals(userpassword))
                 {
                     Result res=new Result(2000,"登录成功", "000");
+                    System.out.println(res);
                     return res;
                 }
                 else {
                     Result res=new Result(2006,"密码不正确", "000");
+                    System.out.println(res);
                     return res;
                 }
             }
         }
         Result res=new Result(2005,"账户不存在","000");
+        System.out.println(res);
         return res;
     }
 }

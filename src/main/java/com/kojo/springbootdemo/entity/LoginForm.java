@@ -1,6 +1,15 @@
 package com.kojo.springbootdemo.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Bean;
+
 public class LoginForm {
+    private String username;
+    private String password;
+
     public String getUsername() {
         return username;
     }
@@ -9,19 +18,12 @@ public class LoginForm {
         this.username = username;
     }
 
-    public String getUserpassword() {
-        return userpassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    private String username;
-    private String userpassword;
-
-    public LoginForm(String username, String userpassword) {
-        this.username = username;
-        this.userpassword = userpassword;
-    }
 }

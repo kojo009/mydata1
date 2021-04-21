@@ -1,5 +1,6 @@
 package com.kojo.springbootdemo.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.kojo.springbootdemo.entity.LoginForm;
 import com.kojo.springbootdemo.entity.Result;
 import com.kojo.springbootdemo.entity.S_users;
@@ -11,8 +12,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -28,6 +32,6 @@ public class EmployeeHandler {
     @CrossOrigin
     @ResponseBody
     public Result login(@RequestBody LoginForm loginForm){
-        return iLoginService.getusersinfo(loginForm.getUsername(),loginForm.getUserpassword(),getUserinfo());
+        return iLoginService.getusersinfo(loginForm.getUsername(),loginForm.getPassword(),getUserinfo());
     }
 }
