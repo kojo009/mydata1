@@ -1,22 +1,16 @@
 package com.kojo.springbootdemo.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.kojo.springbootdemo.entity.LoginForm;
-import com.kojo.springbootdemo.entity.Result;
-import com.kojo.springbootdemo.entity.S_users;
+import com.auth0.jwt.JWT;
+import com.kojo.springbootdemo.entity.*;
+import com.kojo.springbootdemo.repository.EmployeeRepository;
+import com.kojo.springbootdemo.repository.S_permissionsRepository;
 import com.kojo.springbootdemo.repository.S_usersrepository;
 import com.kojo.springbootdemo.service.ILoginService;
-import com.kojo.springbootdemo.service.LoginServiceDefImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -25,13 +19,29 @@ public class EmployeeHandler {
     private S_usersrepository s_usersrepository;
     @Autowired
     private ILoginService iLoginService;
+    @Autowired
+    private EmployeeRepository employeeRepository;
+    @Autowired
+    private S_permissionsRepository s_permissionsRepository;
     public List<S_users> getUserinfo(){
         return s_usersrepository.findAll();
+    }
+    @GetMapping("/api/findAllEmployees")
+    @CrossOrigin
+    public List<Employees> findAll()
+    {
+        return employeeRepository.findAll();
     }
     @PostMapping("/api/login")
     @CrossOrigin
     @ResponseBody
     public Result login(@RequestBody LoginForm loginForm){
-        return iLoginService.getusersinfo(loginForm.getUsername(),loginForm.getPassword(),getUserinfo());
+        return iLoginService.getUsersInfo(loginForm,getUserinfo());
+    }
+    @PostMapping("api/getPermissionsList")
+    @CrossOrigin
+    public List<Integer> getPermissionsList()
+    {
+        return s_permissionsRepository.getid();
     }
 }

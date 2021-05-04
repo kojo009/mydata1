@@ -7,13 +7,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class EmployeeRepositoryTest {
+class S_permissionsRepositoryTest {
     @Autowired
-    private EmployeeRepository employeeRepository;
-
+    private S_permissionsRepository s_permissionsRepository;
     @Test
-    void findall()
+    public void findAll()
     {
-        System.out.println(employeeRepository.searchfordepartmentbyid(3));
+        System.out.println(s_permissionsRepository.getid());
     }
 }

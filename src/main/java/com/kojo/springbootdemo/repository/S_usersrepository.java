@@ -2,6 +2,7 @@ package com.kojo.springbootdemo.repository;
 
 import com.kojo.springbootdemo.entity.S_users;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
